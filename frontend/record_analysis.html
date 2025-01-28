@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .input-container {
+            margin: 2rem auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            width: 60%;
+        }
+
+        .input-container h3 {
+            color: #00ff00;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #111;
+            color: white;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .input-container button {
+            font-size: 1rem;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .input-container button:hover {
+            background-color: darkgreen;
+            transform: scale(1.05);
+        }
+
+        .flash-alert {
+            color: red;
+            font-size: 1rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Record Analysis</h1>
+    </header>
+
+    <main>
+        <div class="input-container">
+            <h3>Please Insert BITalino MAC Address</h3>
+            <input type="text" id="mac-input" placeholder="e.g., 00:1A:7D:DA:71:11" />
+            <button onclick="validateMac()">Submit</button>
+            <div id="flash-alert" class="flash-alert">Wrong BITalino MAC Address</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ECG Dashboard</p>
+    </footer>
+
+    <script>
+        function validateMac() {
+            const macInput = document.getElementById("mac-input").value;
+            const macRegex = /^[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5}$/;
+            const flashAlert = document.getElementById("flash-alert");
+        
+            if (macRegex.test(macInput)) {
+                flashAlert.style.display = "none";
+                window.location.href = "loading_page.html"; // Redirect to the correct page
+            } else {
+                flashAlert.style.display = "block";
+            }
+        }
+        
+    </script>
+</body>
+</html>
